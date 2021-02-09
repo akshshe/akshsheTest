@@ -1,0 +1,137 @@
+{
+  "name": "akshada-shopify-theme",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Akshada Tech Team",
+  "description": "A new depoloyment workflow",
+  "keywords": [
+    "shopify",
+    "theme"
+  ],
+  "main": "index.js",
+  "bugs": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akshshe/akshsheTest"
+  },
+  "enginges": {
+    "node": ">=10.17.1",
+    "yarn": ">=1.21.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "babel-core": "6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "babel-preset-shopify": "21.0.0",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.2.2",
+    "bundle-stats": "^1.15.5",
+    "clean-webpack-plugin": "^3.0.0",
+    "concurrently": "^5.0.2",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.4.2",
+    "eslint-plugin-shopify": "^34.0.0",
+    "expose-loader": "^0.7.5",
+    "file-loader": "^5.0.2",
+    "lint-staged": "^10.0.1",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
+    "prettier": "1.19.1",
+    "read-yaml": "^1.1.0",
+    "resolve-url-loader": "^3.1.1",
+    "sass-loader": "^8.0.2",
+    "standard-markdown": "^5.1.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-shopify": "^7.4.0",
+    "svg-url-loader": "^3.0.3",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-manifest-plugin": "^2.2.0",
+    "write-file-webpack-plugin": "^4.5.1"
+  },
+  "dependencies": {
+    "@shopify/theme-a11y": "^3.0.3",
+    "@shopify/theme-cart": "^3.0.3",
+    "@shopify/theme-currency": "^3.0.3",
+    "@shopify/theme-images": "^3.0.3",
+    "@shopify/theme-rte": "^3.0.3",
+    "@shopify/theme-sections": "^3.0.3",
+    "@shopify/theme-variants": "^1.0.0-alpha.9",
+    "build": "^0.1.4",
+    "dotenv-webpack": "^1.7.0",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-markdown": "^1.0.1",
+    "husky": "^4.0.10",
+    "jquery-zoom": "^1.7.21",
+    "js-cookie": "^2.2.1",
+    "js-sha256": "^0.9.0",
+    "lazysizes": "^5.2.0",
+    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15",
+    "mixitup": "^3.3.1",
+    "moment-timezone": "^0.5.27",
+    "normalize.css": "^8.0.1",
+    "picoapp": "^3.4.0",
+    "pinch-zoom-js": "^2.3.4",
+    "precise-commits": "^1.0.2",
+    "requirejs": "^2.3.6",
+    "shopify-cartjs": "^0.4.3",
+    "slick-carousel": "1.8.1",
+    "standard": "^14.3.1",
+    "timezone": "^1.0.23",
+    "vanilla-lazyload": "12.4.0",
+    "webpack-fix-style-only-entries": "^0.4.0",
+    "webpack-glob": "^2.0.2"
+  },
+  "scripts": {
+    "start": "yarn build && yarn deploy && yarn open && yarn watch",
+    "open": "theme open",
+    "prettier": "prettier --check",
+    "prettier:write": "prettier --write \"src/scripts/**/*.js\"",
+    "start:dev": "webpack-dev-server",
+    "watch": "concurrently --kill-others \"theme watch --dir ./output/\" \"webpack --watch\"",
+    "build": "webpack --config webpack.config.js",
+    "build:production": "webpack --mode=production --config webpack.config.js",
+    "deploy": "theme deploy --dir ./output/",
+    "deploy:production": "yarn build:production && yarn deploy"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  },
+  "standard": {
+    "plugins": [
+      "markdown"
+    ],
+    "ignore": [
+      "./output/",
+      "./dist/"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "precise-commits"
+    }
+  },
+  "lint-staged": {
+    "*.format": [
+      "prettier --check ",
+      "git add"
+    ]
+  },
+  "ignore": [
+    "node_modules",
+    "dist",
+    "package-lock.json"
+  ]
+}
